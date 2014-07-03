@@ -1,8 +1,8 @@
-package br.com.ia.model;
+package br.com.atlantico.model;
 
 import java.util.List;
 
-import br.com.ia.dao.BancoDeDadosLivros;
+import br.com.atlantico.dao.BancoDeDadosLivros;
 
 public class LivroRepository implements Repository<Livro> {
 	
@@ -10,7 +10,7 @@ public class LivroRepository implements Repository<Livro> {
 
 	@Override
 	public Livro salvar(Livro t) {
-		return BancoDeDadosLivros.perist(t);
+		return BancoDeDadosLivros.salvar(t);
 	}
 
 	@Override
@@ -20,17 +20,17 @@ public class LivroRepository implements Repository<Livro> {
 
 	@Override
 	public Livro recuperar(long id) {
-		return BancoDeDadosLivros.retrieve(id);
+		return BancoDeDadosLivros.recupera(id);
 	}
 
 	@Override
 	public List<Livro> listarTodos() {
-		return null;
+		return BancoDeDadosLivros.listaTodos();
 	}
 
 	@Override
-	public Livro deletar(long id) {
-		return null;
+	public void deletar(long id) {
+		BancoDeDadosLivros.deletar(id);
 	}
 
 }

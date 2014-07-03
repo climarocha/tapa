@@ -1,18 +1,18 @@
-package br.com.ia.dao;
+package br.com.atlantico.dao;
 
-import java.util.HashSet;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Random;
-import java.util.Set;
 
-import br.com.ia.model.Assunto;
-import br.com.ia.model.Categoria;
-import br.com.ia.model.Idioma;
-import br.com.ia.model.Livro;
+import br.com.atlantico.model.Assunto;
+import br.com.atlantico.model.Categoria;
+import br.com.atlantico.model.Idioma;
+import br.com.atlantico.model.Livro;
 
 /*Classe que representa a tabela de livros*/
 public class BancoDeDadosLivros implements Cloneable{
 
-	private static Set<Livro> livrosBD = new HashSet<Livro>();
+	private static HashMap<Long, Livro> livrosBD = new HashMap<Long, Livro>();
 	
 	static {
 		iniciaBanco();
@@ -25,34 +25,40 @@ public class BancoDeDadosLivros implements Cloneable{
 		Livro livro1 = new Livro("cdd - L1", "titulo - L1", "descricao - L1", 2010, "autor - L1", "editora - L1",1, "observacao - L1", idioma, categoria);
 		Livro livro2 = new Livro("cdd - L2", "titulo - L2", "descricao - L2", 2010, "autor - L2", "editora - L2",2, "observacao - L2", idioma, categoria);
 		Livro livro3 = new Livro("cdd - L3", "titulo - L3", "descricao - L3", 2010, "autor - L3", "editora - L3",3, "observacao - L3", idioma, categoria);
-		//Atribuindo os ID´s
+		//Atribuindo os IDï¿½s
 		livro1.setId(1);
 		livro2.setId(2);
 		livro3.setId(3);
 		//Adiciona os livros na lista
-		livrosBD.add(livro1);
-		livrosBD.add(livro2);
-		livrosBD.add(livro3);
+		livrosBD.put(livro1.getId(), livro1);
+		livrosBD.put(livro2.getId(), livro2);
+		livrosBD.put(livro3.getId(), livro3);
 	}
 
-	public static Livro perist(Livro t) {
-		t.setId(new Random().nextLong());
-		livrosBD.add(t);
-		return t;
+	public static Livro salvar(Livro livro) {
+		livro.setId(new Random().nextLong());
+		livrosBD.put(livro.getId(), livro);
+		return livro;
 	}
 
-	public static Livro retrieve(long id) {
-		for (Livro livro : livrosBD) {
-			if(livro.getId()==id){
-				return livro.clone();
-			}
+	public static Livro recupera(long id) {
+		if(livrosBD.containsKey(id)){
+			return livrosBD.get(id);
 		}
 		return null;
 	}
 
-	public static Livro update(Livro t) {
-		livrosBD.add(t);
-		return t;
+	public static Livro update(Livro livro) {
+		livrosBD.put(livro.getId(), livro);
+		return livro;
+	}
+	
+	public static List<Livro> listaTodos() {
+		return (List<Livro>) livrosBD.values();
+	}
+	
+	public static void deletar(long id) {
+		livrosBD.remove(id);
 	}
 	
 

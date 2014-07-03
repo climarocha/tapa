@@ -1,20 +1,21 @@
-package br.com.ia.model;
+package br.com.atlantico.model;
 
 public class Categoria {
-	
+
 	private int id;
 	private String descricao;
 	private Assunto assunto;
-	
+
 	public Categoria(int id, String descricao, Assunto assunto) {
 		this.id = id;
 		this.descricao = descricao;
-		this.assunto=assunto;
+		this.assunto = assunto;
 	}
-	
+
 	public int getId() {
 		return id;
 	}
+
 	public String getDescricao() {
 		return descricao;
 	}
