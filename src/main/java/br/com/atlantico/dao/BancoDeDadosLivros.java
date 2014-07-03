@@ -1,5 +1,6 @@
 package br.com.atlantico.dao;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
@@ -14,11 +15,10 @@ public class BancoDeDadosLivros implements Cloneable{
 
 	private static HashMap<Long, Livro> livrosBD = new HashMap<Long, Livro>();
 	
-	static {
-		iniciaBanco();
-	}
-	
-	private static void iniciaBanco(){
+	public static void iniciaBanco(){
+		
+		livrosBD = new HashMap<Long, Livro>();
+		
 		Idioma idioma=new Idioma(1, "Ingles");
 		Categoria categoria=new Categoria(1, "Desenvolvimento de software", new Assunto(1,"Tecnologia da informação"));
 		//Instanciando os livros
@@ -54,7 +54,7 @@ public class BancoDeDadosLivros implements Cloneable{
 	}
 	
 	public static List<Livro> listaTodos() {
-		return (List<Livro>) livrosBD.values();
+		return new ArrayList<>(livrosBD.values());
 	}
 	
 	public static void deletar(long id) {

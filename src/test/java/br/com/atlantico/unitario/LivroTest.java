@@ -54,9 +54,9 @@ public class LivroTest {
 		Livro livroAntigo = new Livro("109Se8.8", "TDD para iniciantes(1ª edição)", "Livro que apresenta a famosa técnica de desenvolvimento", 2010, "Deitel", "FTD", 2, null, idioma, categoria);
 		Livro livroAtualizado = new Livro("109Se8.8", "TDD para iniciantes(2ª edição)", "Livro que apresenta a famosa técnica de desenvolvimento", 2010, "Deitel", "FTD", 2, null, idioma, categoria);
 		
-		Mockito.when(repository.atualizar(livroAntigo)).thenReturn(livroAtualizado);
-		repository.atualizar(livroAntigo);
-		Mockito.verify(repository).atualizar(livroAntigo);
+		Mockito.when(repository.atualizar(livroAtualizado)).thenReturn(livroAtualizado);
+		repository.atualizar(livroAtualizado);
+		Mockito.verify(repository).atualizar(livroAtualizado);
 
 	}
 	
