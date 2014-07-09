@@ -26,16 +26,16 @@ public class LivroTest {
 	
 	@Test
 	public void salvarUmLivroComTodosOsDados(){
-		livro = new Livro("109Se8.8", "TDD para iniciantes", "Livro que apresenta a famosa técnica de desenvolvimento", 2010, "Deitel", "FTD", 2, null, idioma, categoria);
+		livro = new Livro("109Se8.8", "TDD para iniciantes", "Livro que apresenta a famosa tÃ©cnica de desenvolvimento", 2010, "Deitel", "FTD", 2, null, idioma, categoria);
 		repository.salvar(livro);
 		Assert.assertNotNull(livro.getId());
 	}
 	
 	@Test
 	public void atualizarNomeDeUmLivro(){
-		String titulo="TDD para iniciantes(2ª edição)";
+		String titulo="TDD para iniciantes(2Âª ediÃ§Ã£o)";
 		//Persiste o livro
-		Livro livroAntigo = new Livro("109Se8.8", "TDD para iniciantes(1ª edição)", "Livro que apresenta a famosa técnica de desenvolvimento", 2010, "Deitel", "FTD", 2, null, idioma, categoria);
+		Livro livroAntigo = new Livro("109Se8.8", "TDD para iniciantes(1Âª ediÃ§Ã£o)", "Livro que apresenta a famosa tÃ©cnica de desenvolvimento", 2010, "Deitel", "FTD", 2, null, idioma, categoria);
 		livroAntigo = repository.salvar(livroAntigo);
 		//Recupera o livro salvo
 		Livro livroAAtualizar = repository.recuperar(livroAntigo.getId());
@@ -57,7 +57,7 @@ public class LivroTest {
 	
 	@Test
 	public void deveRecuperar1Livro(){
-		livro = new Livro("109Se8.8", "TDD para iniciantes", "Livro que apresenta a famosa técnica de desenvolvimento", 2010, "Deitel", "FTD", 2, null, idioma, categoria);
+		livro = new Livro("109Se8.8", "TDD para iniciantes", "Livro que apresenta a famosa tÃ©cnica de desenvolvimento", 2010, "Deitel", "FTD", 2, null, idioma, categoria);
 		livro = repository.salvar(livro);
 		Assert.assertEquals(livro.getAutor(), repository.recuperar(livro.getId()).getAutor());
 		Assert.assertEquals(livro.getAnoLancamento(), repository.recuperar(livro.getId()).getAnoLancamento());
