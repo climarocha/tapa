@@ -16,20 +16,18 @@ public class BancoDeDadosLivros implements Cloneable{
 	private static HashMap<Long, Livro> livrosBD = new HashMap<Long, Livro>();
 	
 	public static void iniciaBanco(){
-		
 		livrosBD = new HashMap<Long, Livro>();
-		
 		Idioma idioma=new Idioma(1, "Ingles");
 		Categoria categoria=new Categoria(1, "Desenvolvimento de software", new Assunto(1,"Tecnologia da informação"));
 		//Instanciando os livros
 		Livro livro1 = new Livro("cdd - L1", "titulo - L1", "descricao - L1", 2010, "autor - L1", "editora - L1",1, "observacao - L1", idioma, categoria);
 		Livro livro2 = new Livro("cdd - L2", "titulo - L2", "descricao - L2", 2010, "autor - L2", "editora - L2",2, "observacao - L2", idioma, categoria);
 		Livro livro3 = new Livro("cdd - L3", "titulo - L3", "descricao - L3", 2010, "autor - L3", "editora - L3",3, "observacao - L3", idioma, categoria);
-		//Atribuindo os IDï¿½s
+		//Atribuindo os ID´s
 		livro1.setId(1);
 		livro2.setId(2);
 		livro3.setId(3);
-		//Adiciona os livros na lista
+		//Adicionando os livros no Map
 		livrosBD.put(livro1.getId(), livro1);
 		livrosBD.put(livro2.getId(), livro2);
 		livrosBD.put(livro3.getId(), livro3);
@@ -43,7 +41,7 @@ public class BancoDeDadosLivros implements Cloneable{
 
 	public static Livro recupera(long id) {
 		if(livrosBD.containsKey(id)){
-			return livrosBD.get(id);
+			return livrosBD.get(id).clone();
 		}
 		return null;
 	}
@@ -60,7 +58,5 @@ public class BancoDeDadosLivros implements Cloneable{
 	public static void deletar(long id) {
 		livrosBD.remove(id);
 	}
-	
-
 	
 }

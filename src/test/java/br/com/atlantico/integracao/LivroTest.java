@@ -27,23 +27,24 @@ public class LivroTest {
 	@Test
 	public void salvarUmLivroComTodosOsDados(){
 		livro = new Livro("109Se8.8", "TDD para iniciantes", "Livro que apresenta a famosa técnica de desenvolvimento", 2010, "Deitel", "FTD", 2, null, idioma, categoria);
-		
 		repository.salvar(livro);
-		
 		Assert.assertNotNull(livro.getId());
-
 	}
 	
 	@Test
 	public void atualizarNomeDeUmLivro(){
+		String titulo="TDD para iniciantes(2ª edição)";
+		//Persiste o livro
 		Livro livroAntigo = new Livro("109Se8.8", "TDD para iniciantes(1ª edição)", "Livro que apresenta a famosa técnica de desenvolvimento", 2010, "Deitel", "FTD", 2, null, idioma, categoria);
-		Livro livroAtualizado = new Livro("109Se8.8", "TDD para iniciantes(2ª edição)", "Livro que apresenta a famosa técnica de desenvolvimento", 2010, "Deitel", "FTD", 2, null, idioma, categoria);
-		
-		livroAtualizado = repository.atualizar(livroAtualizado);
-		
-		Assert.assertEquals(livroAntigo.getId(), livroAtualizado.getId());
-		Assert.assertEquals(livroAntigo.getAutor(), livroAtualizado.getAutor());
-
+		livroAntigo = repository.salvar(livroAntigo);
+		//Recupera o livro salvo
+		Livro livroAAtualizar = repository.recuperar(livroAntigo.getId());
+		livroAAtualizar.setTitulo(titulo);
+		livroAAtualizar = repository.atualizar(livroAAtualizar);
+		//Verifica os asserts
+		Assert.assertEquals(livroAntigo.getId(), livroAAtualizar.getId());
+		Assert.assertNotEquals(livroAntigo.getTitulo(), livroAAtualizar.getTitulo());
+		Assert.assertEquals(livroAAtualizar.getTitulo(),titulo);
 	}
 	
 	@Test
@@ -57,18 +58,15 @@ public class LivroTest {
 	@Test
 	public void deveRecuperar1Livro(){
 		livro = new Livro("109Se8.8", "TDD para iniciantes", "Livro que apresenta a famosa técnica de desenvolvimento", 2010, "Deitel", "FTD", 2, null, idioma, categoria);
-		repository.salvar(livro);
-		
+		livro = repository.salvar(livro);
 		Assert.assertEquals(livro.getAutor(), repository.recuperar(livro.getId()).getAutor());
 		Assert.assertEquals(livro.getAnoLancamento(), repository.recuperar(livro.getId()).getAnoLancamento());
-
 	}
 	
 	@Test
 	public void deveDeletarUmLivro(){
 		repository.deletar(1);
 		Assert.assertEquals(2, repository.listarTodos().size());
-
 	}
 	
 }

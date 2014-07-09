@@ -28,6 +28,7 @@ public class LivroTest {
 	
 	@Before
 	public void antesDoTeste(){
+		//Cria os mocks das classes anotadas com @Mock
 		MockitoAnnotations.initMocks(this);
 		
 		idioma = new Idioma(1,"Ingles");
@@ -40,9 +41,10 @@ public class LivroTest {
 	public void salvarUmLivroComTodosOsDados(){
 		livro = new Livro("109Se8.8", "TDD para iniciantes", "Livro que apresenta a famosa técnica de desenvolvimento", 2010, "Deitel", "FTD", 2, null, idioma, categoria);
 		Livro livroMock = Mockito.mock(Livro.class);
-		
+		//Verifica o retorno do método quando este for invocado
 		Mockito.when(repository.salvar(livro)).thenReturn(livroMock);
 		repository.salvar(livro);
+		//Verifica se o método do repository foi invocado
 		Mockito.verify(repository).salvar(livro);
 		
 		Assert.assertNotNull(livroMock.getId());
@@ -51,7 +53,6 @@ public class LivroTest {
 	
 	@Test
 	public void atualizarNomeDeUmLivro(){
-		Livro livroAntigo = new Livro("109Se8.8", "TDD para iniciantes(1ª edição)", "Livro que apresenta a famosa técnica de desenvolvimento", 2010, "Deitel", "FTD", 2, null, idioma, categoria);
 		Livro livroAtualizado = new Livro("109Se8.8", "TDD para iniciantes(2ª edição)", "Livro que apresenta a famosa técnica de desenvolvimento", 2010, "Deitel", "FTD", 2, null, idioma, categoria);
 		
 		Mockito.when(repository.atualizar(livroAtualizado)).thenReturn(livroAtualizado);

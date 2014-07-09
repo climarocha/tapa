@@ -115,4 +115,9 @@ public class Livro implements Serializable, Cloneable {
 	public void setAutor(String autor) {
 		this.autor = autor;
 	}
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+	
 }
