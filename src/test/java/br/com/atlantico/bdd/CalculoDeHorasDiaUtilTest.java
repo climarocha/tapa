@@ -14,7 +14,7 @@ import cucumber.annotation.en.Given;
 import cucumber.annotation.en.Then;
 import cucumber.annotation.en.When;
 
-public class CalculoDoBancoDeHoras implements Serializable{
+public class CalculoDeHorasDiaUtilTest implements Serializable{
 	
 	private static final long serialVersionUID = -4335130561363624216L;
 	private Funcionario funcionario;
@@ -54,7 +54,7 @@ public class CalculoDoBancoDeHoras implements Serializable{
 		}
 	}
 
-	@Then("^O funcionario trabalhou \"([^\"]*)\" horas, tem saldo de horas do banco de \"([^\"]*)\", tem saldo de horas de atraso do banco de \"([^\"]*)\", tem \"([^\"]*)\" horas extras e atrasou: \"([^\"]*)\"$")
+	@Then("^deve calcular as horas trabalhadas pelo funcionario - trabalhou \"([^\"]*)\" horas, tem saldo de horas do banco de \"([^\"]*)\", tem saldo de horas de atraso do banco de \"([^\"]*)\", tem \"([^\"]*)\" horas extras e atrasou: \"([^\"]*)\"$")
 	public void O_funcionario_trabalhou_horas_tem_saldo_de_horas_do_banco_de_tem_saldo_de_horas_de_atraso_do_banco_de_tem_horas_extras_e_atrasou(String horasTrabalhada, String horasExtraBanco, String horasAtrasoBanco, String horasExtra, String horasAtraso){
 		assertEquals(new PeriodoUtil(calculadorDeHoras.getHorasTrabalhada()).periodoFormatado(), horasTrabalhada);
 		assertEquals(new PeriodoUtil(calculadorDeHoras.getHorasExtraBanco()).periodoFormatado(), horasExtraBanco);
