@@ -48,11 +48,8 @@ public class FuncionarioDaoTest {
 	public void testRemoverFuncionario(){
 		Long matricula = FuncionarioDAO.salvar(funcionario);
 		funcionario = FuncionarioDAO.recuperar(matricula);
-		
-		Funcionario funcionario = FuncionarioDAO.remover(funcionario.getMatricula());
-		
-		Assert.assertEquals("Zé", func.getNome());
-		
+		Funcionario func = FuncionarioDAO.remover(funcionario.getMatricula());
+		Assert.assertEquals("Victor", func.getNome());
 	}
 	
 }

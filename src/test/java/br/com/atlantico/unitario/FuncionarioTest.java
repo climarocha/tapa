@@ -33,20 +33,5 @@ public class FuncionarioTest {
 		funcionario.setNome("rondy");
 		Assert.assertEquals(funcionario.getNome(), "rondy");
 	}
-	
-	
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }
 
