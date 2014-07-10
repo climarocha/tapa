@@ -55,13 +55,12 @@ public class CalculoDeHorasDiaUtilTest implements Serializable{
 	}
 
 	@Then("^deve calcular as horas trabalhadas pelo funcionario - trabalhou \"([^\"]*)\" horas, tem saldo de horas do banco de \"([^\"]*)\", tem saldo de horas de atraso do banco de \"([^\"]*)\", tem \"([^\"]*)\" horas extras e atrasou: \"([^\"]*)\"$")
-	public void O_funcionario_trabalhou_horas_tem_saldo_de_horas_do_banco_de_tem_saldo_de_horas_de_atraso_do_banco_de_tem_horas_extras_e_atrasou(String horasTrabalhada, String horasExtraBanco, String horasAtrasoBanco, String horasExtra, String horasAtraso){
+	public void deve_calculo_as_horas_trabalhadas_pelo_funcionario(String horasTrabalhada, String horasExtraBanco, String horasAtrasoBanco, String horasExtra, String horasAtraso){
 		assertEquals(new PeriodoUtil(calculadorDeHoras.getHorasTrabalhada()).periodoFormatado(), horasTrabalhada);
 		assertEquals(new PeriodoUtil(calculadorDeHoras.getHorasExtraBanco()).periodoFormatado(), horasExtraBanco);
 		assertEquals(new PeriodoUtil(calculadorDeHoras.getHorasAtrasoBanco()).periodoFormatado(), horasAtrasoBanco);
 		assertEquals(new PeriodoUtil(calculadorDeHoras.getHorasExtra()).periodoFormatado(), horasExtra);
 		assertEquals(new PeriodoUtil(calculadorDeHoras.getHorasAtraso()).periodoFormatado(), horasAtraso);
-		
 	}
 	
 	@When("^em um dia util da semana$")
