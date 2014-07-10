@@ -1,4 +1,6 @@
-Feature: Realizar o calculo do banco de horas de acordo com o horario nucleo definido pela instituicao.
+Feature: Como funcionario
+	Eu quero acompanhar diariamente as minhas horas trabalhadas, minhas horas extras e de banco
+	Para que eu precise saber se há necessidade de eu pagar ou não horas 
 
   @important
   Scenario: Um funcionario possui a configuracao padrao de horario, realiza as batidas dentro do seu horario de trabalho e cumpre exatamente jornada de trabalho horas 

@@ -14,7 +14,7 @@ import cucumber.annotation.en.Given;
 import cucumber.annotation.en.Then;
 import cucumber.annotation.en.When;
 
-public class CalculoDeHorasDiaUtilTest implements Serializable{
+public class CalculoDeHorasDiaUtilBehavior implements Serializable{
 	
 	private static final long serialVersionUID = -4335130561363624216L;
 	private Funcionario funcionario;
